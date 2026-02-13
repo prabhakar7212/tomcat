@@ -1,0 +1,98 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 40px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0 12px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .success {
+            margin-top: 20px;
+            color: green;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Contact Us</h2>
+
+    <form id="contactForm">
+        <label>Your Name</label>
+        <input type="text" id="name" required>
+
+        <label>Mobile Number</label>
+        <input type="text" id="mobile" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="responseMessage" class="success"></div>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const mobile = document.getElementById("mobile").value;
+
+    const res = await fetch("saveContact", {
+        method: "POST",
+        headers: {"Content-Type":"application/x-www-form-urlencoded"},
+        body: "name=" + encodeURIComponent(name) +
+              "&mobile=" + encodeURIComponent(mobile)
+    });
+
+    if(res.ok){
+        document.getElementById("responseMessage").innerText =
+            "Saved: Name = " + name + " | Mobile = " + mobile;
+
+        document.getElementById("contactForm").reset();
+    } else {
+        document.getElementById("responseMessage").innerText =
+            "Error saving contact.";
+    }
+});
+</script>
+
+</body>
+</html>
+
