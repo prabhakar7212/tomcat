@@ -161,7 +161,7 @@
 </div>
 
 <div class="contact-form">
-    <h2>To Order Provide Your Details We Will Reach You</h2>
+    <h2>Share Below Details We Will Call You</h2>
     <form method="post" action="saveContact">
         <input type="text" name="name" placeholder="Enter Your Name" required><br>
         <input type="text" name="mobile" placeholder="Enter Mobile Number" required><br>
