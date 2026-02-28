@@ -161,10 +161,11 @@
 </div>
 
 <div class="contact-form">
-    <h2>Share Below Details We Will Call You</h2>
+    <h2>Share Your Feedback Below</h2>
     <form method="post" action="saveContact">
         <input type="text" name="name" placeholder="Enter Your Name" required><br>
         <input type="text" name="mobile" placeholder="Enter Mobile Number" required><br>
+        <input type="text" name="Feedback" placeholder="Enter Your Feedback" required><br>
         <button type="submit">Submit</button>
     </form>
 </div>
